@@ -21,7 +21,7 @@ function App() {
 
     const sendIPAddress = async (ip) => {
       try {
-          const response = await axios.post('http://localhost:5000/save-ip', { ip }); // Changed endpoint
+          const response = await axios.post('https://ipaddress-snn9.onrender.com/save-ip', { ip }); // Changed endpoint
           setMessage(response.data.message);
       } catch (error) {
           // ... (error handling)
