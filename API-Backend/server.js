@@ -16,22 +16,24 @@ mongoose.connect(mongoURI, {
 .catch(err => console.log(err));
 
 // Define a Mongoose schema
-const ipSchema = new mongoose.Schema({
+const dataSchema = new mongoose.Schema({
     ipAddress: String,
-    timestamp: { type: Date, default: Date.now }
+    latitude: Number,
+    longitude: Number,
+    timestamp: { type: Date, default: Date.now },
 });
 
-const IP = mongoose.model('IP', ipSchema); // Create a model
+const Data = mongoose.model('Data', dataSchema);
 
-app.post('/save-ip', async (req, res) => {
+app.post('/save-data', async (req, res) => {
     try {
-        const { ip } = req.body;
-        const newIP = new IP({ ipAddress: ip });
-        await newIP.save();
-        res.status(200).json({ message: 'IP address saved successfully' });
+        const { ipAddress, latitude, longitude } = req.body;
+        const newData = new Data({ ipAddress, latitude, longitude });
+        await newData.save();
+        res.status(200).json({ message: 'Data saved successfully' });
     } catch (error) {
-        console.error('Error saving IP:', error);
-        res.status(500).json({ message: 'Error saving IP address' });
+        console.error('Error saving data:', error);
+        res.status(500).json({ message: 'Error saving data' });
     }
 });
 
