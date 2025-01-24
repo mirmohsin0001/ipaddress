@@ -6,7 +6,7 @@ function App() {
     const [ipAddress, setIpAddress] = useState(null);
     const [gpsCoordinates, setGpsCoordinates] = useState(null);
     const [message, setMessage] = useState(null);
-    const backendUrl = 'https://ipaddress-snn9.onrender.com'; // Replace with your actual backend URL
+    const backendUrl = 'http://18.204.226.235:5000'; // Replace with your actual backend URL
 
     useEffect(() => {
         const fetchData = async () => {

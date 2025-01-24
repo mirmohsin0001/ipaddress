@@ -37,15 +37,4 @@ app.post('/save-data', async (req, res) => {
     }
 });
 
-// Route to get all IP addresses (for your other website)
-app.get('/get-ips', async (req, res) => {
-    try {
-        const ips = await IP.find().sort({ timestamp: -1 }); // Get all IPs, sorted by most recent
-        res.status(200).json(ips);
-    } catch (error) {
-        console.error('Error getting IPs:', error);
-        res.status(500).json({ message: 'Error getting IP addresses' });
-    }
-});
-
 app.listen(port, () => console.log(`Server listening on port ${port}`));
