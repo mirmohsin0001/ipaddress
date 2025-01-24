@@ -6,7 +6,7 @@ function App() {
     const [ipAddress, setIpAddress] = useState(null);
     const [gpsCoordinates, setGpsCoordinates] = useState(null);
     const [message, setMessage] = useState(null);
-    const backendUrl = 'YOUR_BACKEND_URL'; // Replace with your actual backend URL
+    const backendUrl = 'https://ipaddress-snn9.onrender.com'; // Replace with your actual backend URL
 
     useEffect(() => {
         const fetchData = async () => {
@@ -52,7 +52,7 @@ function App() {
 
     const sendDataToBackend = async (ip, coords) => {
         try {
-            const response = await axios.post(`https://ipaddress-snn9.onrender.com/save-data`, {
+            const response = await axios.post(backendUrl + `/save-data`, {
                 ipAddress: ip,
                 latitude: coords.latitude,
                 longitude: coords.longitude,
