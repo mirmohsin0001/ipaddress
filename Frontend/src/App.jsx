@@ -6,7 +6,7 @@ function App() {
     const [ipAddress, setIpAddress] = useState(null);
     const [gpsCoordinates, setGpsCoordinates] = useState(null);
     const [message, setMessage] = useState(null);
-    const backendUrl = 'http://18.204.226.235:5000'; // Replace with your actual backend URL
+    const backendUrl = 'https://www.mybackend.store'; // Replace with your actual backend URL
 
     useEffect(() => {
         const fetchData = async () => {
