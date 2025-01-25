@@ -20,15 +20,15 @@ const dataSchema = new mongoose.Schema({
     ipAddress: String,
     latitude: Number,
     longitude: Number,
-    timestamp: { type: Date, default: Date.now },
+    timestamp: String
 });
 
 const Data = mongoose.model('Data', dataSchema);
 
 app.post('/save-data', async (req, res) => {
     try {
-        const { ipAddress, latitude, longitude } = req.body;
-        const newData = new Data({ ipAddress, latitude, longitude });
+        const { ipAddress, latitude, longitude, timestamp } = req.body;
+        const newData = new Data({ ipAddress, latitude, longitude, timestamp });
         await newData.save();
         res.status(200).json({ message: 'Data saved successfully' });
     } catch (error) {

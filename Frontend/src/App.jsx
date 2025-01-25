@@ -6,7 +6,7 @@ function App() {
     const [ipAddress, setIpAddress] = useState(null);
     const [gpsCoordinates, setGpsCoordinates] = useState(null);
     const [message, setMessage] = useState(null);
-    const backendUrl = 'https://www.mybackend.store'; // Replace with your actual backend URL
+    const backendUrl = 'https://mybackend.store'; // Replace with your actual backend URL
 
     useEffect(() => {
         const fetchData = async () => {
@@ -51,11 +51,14 @@ function App() {
     }, [ipAddress, gpsCoordinates]);
 
     const sendDataToBackend = async (ip, coords) => {
+        let now = Date().toLocaleString();
+        console.log(now);
         try {
             const response = await axios.post(backendUrl + `/save-data`, {
                 ipAddress: ip,
                 latitude: coords.latitude,
                 longitude: coords.longitude,
+                timestamp: now,
             });
             setMessage(response.data.message);
         } catch (error) {
